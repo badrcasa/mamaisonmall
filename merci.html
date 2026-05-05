@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merci! - Mamaisonmall</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* Container */
+        .container {
+            background: white;
+            padding: 50px 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            max-width: 600px;
+            text-align: center;
+        }
+
+        /* Animated Thank You */
+        .thank-you-section {
+            margin-bottom: 40px;
+        }
+
+        .thank-you-icon {
+            font-size: 100px;
+            margin-bottom: 20px;
+            animation: celebrate 0.6s ease-in-out infinite alternate;
+        }
+
+        @keyframes celebrate {
+            0% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.1) rotate(5deg); }
+            100% { transform: scale(1) rotate(0deg); }
+        }
+
+        h1 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        /* Benefits Section */
+        .benefits-section {
+            background: #f0f4ff;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .benefits-section h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 1.3em;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            gap: 15px;
+        }
+
+        .benefit-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .benefit-icon {
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .benefit-text {
+            color: #555;
+        }
+
+        .benefit-text strong {
+            color: #667eea;
+            display: block;
+            margin-bottom: 3px;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: #e8f4f8;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 4px solid #667eea;
+        }
+
+        .contact-section h3 {
+            color: #667eea;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        .contact-info {
+            color: #555;
+            font-size: 1.05em;
+            font-weight: 500;
+        }
+
+        /* Buttons */
+        .button-group {
+            display: flex;
+            gap: 15px;
+            flex-direction: column;
+        }
+
+        button {
+            padding: 16px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: #f0f4ff;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .btn-secondary:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #888;
+            font-size: 0.9em;
+            margin-top: 40px;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .thank-you-icon {
+                font-size: 80px;
+            }
+
+            .subtitle {
+                font-size: 1em;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Thank You Section -->
+        <div class="thank-you-section">
+            <div class="thank-you-icon">🎉</div>
+            <h1>Merci beaucoup!</h1>
+            <p class="subtitle">
+                Votre commande a été reçue avec succès.<br>
+                Nous vous remercions de votre confiance!
+            </p>
+        </div>
+
+        <!-- Benefits Section -->
+        <div class="benefits-section">
+            <h2>✨ Avantages avec Mamaisonmall:</h2>
+            <div class="benefit-item">
+                <div class="benefit-icon">📞</div>
+                <div class="benefit-text">
+                    <strong>Appel de confirmation</strong>
+                    Nous vous appellerons dans les 24 heures pour confirmer les détails
+                </div>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon">💰</div>
+                <div class="benefit-text">
+                    <strong>Paiement à la livraison</strong>
+                    Aucun pré-paiement nécessaire, payez en recevant votre commande
+                </div>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon">🚚</div>
+                <div class="benefit-text">
+                    <strong>Livraison rapide</strong>
+                    Nous livrons rapidement et en toute sécurité à votre domicile
+                </div>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon">✅</div>
+                <div class="benefit-text">
+                    <strong>Qualité garantie</strong>
+                    Tous nos produits sont authentiques et de haute qualité
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="contact-section">
+            <h3>📧 Besoin d'aide?</h3>
+            <p class="contact-info">
+                Contactez-nous par email:<br>
+                <strong>fb.storebusiness@gmail.com</strong>
+            </p>
+        </div>
+
+        <!-- Buttons -->
+        <div class="button-group">
+            <button class="btn-primary" onclick="goHome()">Retourner à l'accueil</button>
+            <button class="btn-secondary" onclick="newOrder()">Passer une autre commande</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Mamaisonmall. Tous droits réservés.</p>
+    </footer>
+
+    <script>
+        function goHome() {
+            window.location.href = 'index.html';
+        }
+
+        function newOrder() {
+            localStorage.removeItem('commandeData');
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>
