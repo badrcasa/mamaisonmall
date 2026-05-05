@@ -100,35 +100,6 @@
             font-size: 0.9em;
         }
 
-        /* CTA Button */
-        .cta-section {
-            text-align: center;
-            margin: 40px 0;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 16px 40px;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.2em;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
-            text-decoration: none;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
-        }
-
-        .cta-button:active {
-            transform: translateY(-1px);
-        }
-
         /* Products List */
         .products-section {
             background: #f9f9f9;
@@ -151,6 +122,112 @@
 
         .product-item:last-child {
             border-bottom: none;
+        }
+
+        /* Form Styles */
+        .form-section {
+            background: #f0f4ff;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 30px 0;
+            border: 2px solid #667eea;
+        }
+
+        .form-section h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.3em;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #333;
+            font-size: 0.95em;
+        }
+
+        input, select, textarea {
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+            font-family: inherit;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 8px rgba(102, 126, 234, 0.2);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        /* Quantity Section */
+        .quantity-section {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quantity-btn {
+            width: 40px;
+            height: 40px;
+            border: 2px solid #667eea;
+            background: white;
+            color: #667eea;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1.2em;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .quantity-btn:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        #quantite {
+            width: 60px;
+            text-align: center;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            padding: 8px;
+            font-size: 1em;
+        }
+
+        /* Submit Button */
+        button[type="submit"] {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 14px 30px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        button[type="submit"]:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        button[type="submit"]:active {
+            transform: translateY(0);
         }
 
         /* Footer */
@@ -177,9 +254,8 @@
                 grid-template-columns: 1fr;
             }
 
-            .cta-button {
-                padding: 14px 30px;
-                font-size: 1em;
+            input, select, textarea {
+                font-size: 16px;
             }
         }
     </style>
@@ -193,7 +269,7 @@
     <div class="container">
         <div class="info-section">
             <h2>📦 Commande par COD</h2>
-            <p>Bienvenue chez Mamaisonmall! Nous vous proposons une large gamme d'électroménager de qualité avec livraison à domicile. Remplissez le formulaire pour passer votre commande et nous vous contacterons rapidement pour confirmer les détails de votre livraison.</p>
+            <p>Bienvenue chez Mamaisonmall! Nous vous proposons une large gamme d'électroménager de qualité avec livraison à domicile. Remplissez le formulaire ci-dessous pour passer votre commande.</p>
         </div>
 
         <!-- Features -->
@@ -232,21 +308,57 @@
             <div class="product-item">• Et bien d'autres...</div>
         </div>
 
-        <!-- CTA -->
-        <div class="cta-section">
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdazsTMITzoCSD1nL3kWNgsMvKsVMIjs81SCJPPLzaWxXjxaQ/viewform?usp=publish-editor" target="_blank" class="cta-button">
-                📤 Passer une Commande
-            </a>
+        <!-- Form Section -->
+        <div class="form-section">
+            <h2>📝 Formulaire de Commande</h2>
+            <form id="commandeForm" onsubmit="handleSubmit(event)">
+                <!-- Nom -->
+                <div class="form-group">
+                    <label for="nom">Nom Complet *</label>
+                    <input type="text" id="nom" name="nom" required placeholder="Votre nom complet">
+                </div>
+
+                <!-- Téléphone -->
+                <div class="form-group">
+                    <label for="telephone">Numéro Téléphone *</label>
+                    <input type="tel" id="telephone" name="telephone" required placeholder="06 XX XX XX XX">
+                </div>
+
+                <!-- Ville -->
+                <div class="form-group">
+                    <label for="ville">Ville *</label>
+                    <input type="text" id="ville" name="ville" required placeholder="Votre ville">
+                </div>
+
+                <!-- Adresse -->
+                <div class="form-group">
+                    <label for="adresse">Adresse Complète *</label>
+                    <textarea id="adresse" name="adresse" required placeholder="Rue, numéro, immeuble..."></textarea>
+                </div>
+
+                <!-- Quantité -->
+                <div class="form-group">
+                    <label>Quantité *</label>
+                    <div class="quantity-section">
+                        <button type="button" class="quantity-btn" onclick="decreaseQuantity()">−</button>
+                        <input type="number" id="quantite" name="quantite" value="1" min="1" readonly>
+                        <button type="button" class="quantity-btn" onclick="increaseQuantity()">+</button>
+                    </div>
+                </div>
+
+                <!-- Submit -->
+                <button type="submit">📤 Confirmer la Commande</button>
+            </form>
         </div>
 
         <div class="info-section">
             <h2>ℹ️ Comment Commander?</h2>
             <p>
-                <strong>1.</strong> Cliquez sur le bouton "Passer une Commande" ci-dessus<br>
-                <strong>2.</strong> Remplissez le formulaire avec vos informations<br>
-                <strong>3.</strong> Nous vous appellerons pour confirmer<br>
-                <strong>4.</strong> Payez à la livraison (COD)<br>
-                <strong>5.</strong> Recevez votre commande à domicile
+                <strong>1.</strong> Remplissez le formulaire ci-dessus<br>
+                <strong>2.</strong> Cliquez sur "Confirmer la Commande"<br>
+                <strong>3.</strong> Vous recevrez une page de confirmation<br>
+                <strong>4.</strong> Nous vous appellerons pour les détails<br>
+                <strong>5.</strong> Payez à la livraison (COD)
             </p>
         </div>
     </div>
@@ -254,5 +366,42 @@
     <footer>
         <p>&copy; 2026 Mamaisonmall. Tous droits réservés.</p>
     </footer>
+
+    <script>
+        function increaseQuantity() {
+            const input = document.getElementById('quantite');
+            input.value = parseInt(input.value) + 1;
+        }
+
+        function decreaseQuantity() {
+            const input = document.getElementById('quantite');
+            if (parseInt(input.value) > 1) {
+                input.value = parseInt(input.value) - 1;
+            }
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault();
+
+            // Récupérer les données du formulaire
+            const nom = document.getElementById('nom').value;
+            const telephone = document.getElementById('telephone').value;
+            const ville = document.getElementById('ville').value;
+            const adresse = document.getElementById('adresse').value;
+            const quantite = document.getElementById('quantite').value;
+
+            // Sauvegarder dans localStorage pour la page de confirmation
+            localStorage.setItem('commandeData', JSON.stringify({
+                nom: nom,
+                telephone: telephone,
+                ville: ville,
+                adresse: adresse,
+                quantite: quantite
+            }));
+
+            // Rediriger vers la page de confirmation
+            window.location.href = 'confirmation.html';
+        }
+    </script>
 </body>
 </html>
