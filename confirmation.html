@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmation - Mamaisonmall</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* Container */
+        .container {
+            background: white;
+            padding: 50px 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            max-width: 600px;
+        }
+
+        /* Header */
+        .confirmation-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .confirmation-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            animation: slideDown 0.6s ease-out;
+        }
+
+        @keyframes slideDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            color: #667eea;
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        /* Order Number */
+        .order-number {
+            background: #f0f4ff;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 30px;
+            border: 2px solid #667eea;
+        }
+
+        .order-number p {
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .order-number .number {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #667eea;
+            font-family: monospace;
+            letter-spacing: 2px;
+        }
+
+        /* Summary Section */
+        .summary-section {
+            background: #f9f9f9;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-left: 4px solid #667eea;
+        }
+
+        .summary-section h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.2em;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .summary-item:last-child {
+            border-bottom: none;
+        }
+
+        .summary-label {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .summary-value {
+            color: #667eea;
+            font-weight: 500;
+        }
+
+        /* Next Steps */
+        .next-steps {
+            background: #e8f4f8;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-left: 4px solid #17a2b8;
+        }
+
+        .next-steps h3 {
+            color: #17a2b8;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .step-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            gap: 12px;
+        }
+
+        .step-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .step-number {
+            background: #17a2b8;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .step-text {
+            color: #555;
+            padding-top: 3px;
+        }
+
+        /* Buttons */
+        .button-group {
+            display: flex;
+            gap: 15px;
+            flex-direction: column;
+        }
+
+        button {
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: #f0f4ff;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .btn-secondary:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #888;
+            font-size: 0.9em;
+            margin-top: 30px;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            .confirmation-icon {
+                font-size: 60px;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="confirmation-header">
+            <div class="confirmation-icon">✅</div>
+            <h1>Commande Confirmée!</h1>
+            <p class="subtitle">Merci de votre confiance</p>
+        </div>
+
+        <!-- Order Number -->
+        <div class="order-number">
+            <p>Numéro de commande</p>
+            <div class="number" id="orderNumber">#CMD-2026-0001</div>
+        </div>
+
+        <!-- Summary Section -->
+        <div class="summary-section">
+            <h2>📋 Résumé de la Commande</h2>
+            <div class="summary-item">
+                <span class="summary-label">Nom:</span>
+                <span class="summary-value" id="summaryNom">-</span>
+            </div>
+            <div class="summary-item">
+                <span class="summary-label">Téléphone:</span>
+                <span class="summary-value" id="summaryTel">-</span>
+            </div>
+            <div class="summary-item">
+                <span class="summary-label">Ville:</span>
+                <span class="summary-value" id="summaryVille">-</span>
+            </div>
+            <div class="summary-item">
+                <span class="summary-label">Adresse:</span>
+                <span class="summary-value" id="summaryAdresse">-</span>
+            </div>
+            <div class="summary-item">
+                <span class="summary-label">Quantité:</span>
+                <span class="summary-value" id="summaryQuantite">-</span>
+            </div>
+        </div>
+
+        <!-- Next Steps -->
+        <div class="next-steps">
+            <h3>📞 Prochaines Étapes</h3>
+            <div class="step-item">
+                <div class="step-number">1</div>
+                <div class="step-text">Nous vous appellerons dans les 24 heures pour confirmer</div>
+            </div>
+            <div class="step-item">
+                <div class="step-number">2</div>
+                <div class="step-text">Nous fixerons une date et heure de livraison</div>
+            </div>
+            <div class="step-item">
+                <div class="step-number">3</div>
+                <div class="step-text">Vous paierez à la livraison (COD)</div>
+            </div>
+            <div class="step-item">
+                <div class="step-number">4</div>
+                <div class="step-text">Recevez votre commande à domicile</div>
+            </div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="button-group">
+            <button class="btn-primary" onclick="goToThanks()">✅ Continuer</button>
+            <button class="btn-secondary" onclick="goHome()">🏠 Retourner à l'accueil</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Mamaisonmall. Tous droits réservés.</p>
+    </footer>
+
+    <script>
+        // Charger les données du formulaire
+        function loadOrderData() {
+            const data = JSON.parse(localStorage.getItem('commandeData') || '{}');
+            
+            // Afficher les données
+            document.getElementById('summaryNom').textContent = data.nom || '-';
+            document.getElementById('summaryTel').textContent = data.telephone || '-';
+            document.getElementById('summaryVille').textContent = data.ville || '-';
+            document.getElementById('summaryAdresse').textContent = data.adresse || '-';
+            document.getElementById('summaryQuantite').textContent = (data.quantite || '-') + ' article(s)';
+
+            // Générer un numéro de commande unique
+            const timestamp = Date.now();
+            const random = Math.floor(Math.random() * 1000);
+            document.getElementById('orderNumber').textContent = `#CMD-${timestamp}-${random}`;
+        }
+
+        function goToThanks() {
+            window.location.href = 'merci.html';
+        }
+
+        function goHome() {
+            localStorage.removeItem('commandeData');
+            window.location.href = 'index.html';
+        }
+
+        // Charger les données au chargement de la page
+        window.addEventListener('load', loadOrderData);
+    </script>
+</body>
+</html>
