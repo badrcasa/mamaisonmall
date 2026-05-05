@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mamaisonmall - Électroménager</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        /* Container */
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        /* Info Section */
+        .info-section {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-left: 4px solid #667eea;
+        }
+
+        .info-section h2 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+
+        .info-section p {
+            color: #666;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+
+        /* Features Section */
+        .features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .feature {
+            background: #f0f4ff;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #e0e8ff;
+        }
+
+        .feature-icon {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .feature h3 {
+            color: #667eea;
+            margin-bottom: 8px;
+            font-size: 1em;
+        }
+
+        .feature p {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        /* CTA Button */
+        .cta-section {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 16px 40px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .cta-button:active {
+            transform: translateY(-1px);
+        }
+
+        /* Products List */
+        .products-section {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .products-section h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .product-item {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            color: #555;
+        }
+
+        .product-item:last-child {
+            border-bottom: none;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #888;
+            font-size: 0.9em;
+            margin-top: 40px;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .container {
+                margin: 20px;
+                padding: 20px;
+            }
+
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-button {
+                padding: 14px 30px;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🏠 Mamaisonmall</h1>
+        <p>Électroménager de qualité - Livraison à Domicile</p>
+    </header>
+
+    <div class="container">
+        <div class="info-section">
+            <h2>📦 Commande par COD</h2>
+            <p>Bienvenue chez Mamaisonmall! Nous vous proposons une large gamme d'électroménager de qualité avec livraison à domicile. Remplissez le formulaire pour passer votre commande et nous vous contacterons rapidement pour confirmer les détails de votre livraison.</p>
+        </div>
+
+        <!-- Features -->
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">✅</div>
+                <h3>Paiement à la Livraison</h3>
+                <p>Payez directement au livreur</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🚚</div>
+                <h3>Livraison Rapide</h3>
+                <p>Rapide et fiable</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">💯</div>
+                <h3>Qualité Garantie</h3>
+                <p>Produits authentiques</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">📞</div>
+                <h3>Support Client</h3>
+                <p>À votre service</p>
+            </div>
+        </div>
+
+        <!-- Products -->
+        <div class="products-section">
+            <h3>🛒 Nos Produits</h3>
+            <div class="product-item">• Réfrigérateurs</div>
+            <div class="product-item">• Machines à laver</div>
+            <div class="product-item">• Fours et cuisinières</div>
+            <div class="product-item">• Climatiseurs</div>
+            <div class="product-item">• Lave-vaisselle</div>
+            <div class="product-item">• Micro-ondes</div>
+            <div class="product-item">• Et bien d'autres...</div>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-section">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdazsTMITzoCSD1nL3kWNgsMvKsVMIjs81SCJPPLzaWxXjxaQ/viewform?usp=publish-editor" target="_blank" class="cta-button">
+                📤 Passer une Commande
+            </a>
+        </div>
+
+        <div class="info-section">
+            <h2>ℹ️ Comment Commander?</h2>
+            <p>
+                <strong>1.</strong> Cliquez sur le bouton "Passer une Commande" ci-dessus<br>
+                <strong>2.</strong> Remplissez le formulaire avec vos informations<br>
+                <strong>3.</strong> Nous vous appellerons pour confirmer<br>
+                <strong>4.</strong> Payez à la livraison (COD)<br>
+                <strong>5.</strong> Recevez votre commande à domicile
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Mamaisonmall. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>
