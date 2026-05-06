@@ -230,6 +230,33 @@
             transform: translateY(0);
         }
 
+        button[type="submit"]:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        /* Alert Messages */
+        .alert {
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .alert.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: block;
+        }
+
+        .alert.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: block;
+        }
+
         /* Footer */
         footer {
             text-align: center;
@@ -311,6 +338,7 @@
         <!-- Form Section -->
         <div class="form-section">
             <h2>📝 Formulaire de Commande</h2>
+            <div id="alert" class="alert"></div>
             <form id="commandeForm" onsubmit="handleSubmit(event)">
                 <!-- Nom -->
                 <div class="form-group">
@@ -347,7 +375,7 @@
                 </div>
 
                 <!-- Submit -->
-                <button type="submit">📤 Confirmer la Commande</button>
+                <button type="submit" id="submitBtn">📤 Confirmer la Commande</button>
             </form>
         </div>
 
@@ -368,6 +396,8 @@
     </footer>
 
     <script>
+        const GOOGLE_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwqC78_0mvbjhv5mztyxUN6VzHhxRcB9iWmlBdwTgxjusdTlqXR2S0oih0kUIlESTkd7Q/exec";
+
         function increaseQuantity() {
             const input = document.getElementById('quantite');
             input.value = parseInt(input.value) + 1;
@@ -380,8 +410,24 @@
             }
         }
 
-        function handleSubmit(event) {
+        function showAlert(message, type) {
+            const alertDiv = document.getElementById('alert');
+            alertDiv.textContent = message;
+            alertDiv.className = `alert ${type}`;
+        }
+
+        function generateOrderId() {
+            const timestamp = Date.now();
+            const random = Math.floor(Math.random() * 1000);
+            return `CMD-${timestamp}-${random}`;
+        }
+
+        async function handleSubmit(event) {
             event.preventDefault();
+
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = '⏳ Envoi en cours...';
 
             // Récupérer les données du formulaire
             const nom = document.getElementById('nom').value;
@@ -389,18 +435,44 @@
             const ville = document.getElementById('ville').value;
             const adresse = document.getElementById('adresse').value;
             const quantite = document.getElementById('quantite').value;
+            const commandeId = generateOrderId();
 
-            // Sauvegarder dans localStorage pour la page de confirmation
-            localStorage.setItem('commandeData', JSON.stringify({
+            // Données à envoyer
+            const data = {
                 nom: nom,
                 telephone: telephone,
                 ville: ville,
                 adresse: adresse,
-                quantite: quantite
-            }));
+                quantite: quantite,
+                commandeId: commandeId
+            };
 
-            // Rediriger vers la page de confirmation
-            window.location.href = 'confirmation.html';
+            try {
+                // Envoyer les données à Google Sheets via Apps Script
+                const response = await fetch(GOOGLE_APPS_SCRIPT_URL, {
+                    method: 'POST',
+                    body: JSON.stringify(data)
+                });
+
+                if (response.ok) {
+                    showAlert('✅ Commande envoyée avec succès! Redirection...', 'success');
+                    
+                    // Sauvegarder les données localement
+                    localStorage.setItem('commandeData', JSON.stringify(data));
+
+                    // Rediriger après 1.5 secondes
+                    setTimeout(() => {
+                        window.location.href = 'confirmation.html';
+                    }, 1500);
+                } else {
+                    throw new Error('Erreur lors de l\'envoi');
+                }
+            } catch (error) {
+                console.error('Erreur:', error);
+                showAlert('❌ Erreur lors de l\'envoi. Veuillez réessayer.', 'error');
+                submitBtn.disabled = false;
+                submitBtn.textContent = '📤 Confirmer la Commande';
+            }
         }
     </script>
 </body>
